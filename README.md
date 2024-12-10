@@ -7,7 +7,7 @@
 
 ---
 
-###### 1. Natija qanday chiqadi
+###### 1. Natija qnday chiqadi
 
 ```javascript
 function sayHi() {
@@ -20,26 +20,25 @@ function sayHi() {
 sayHi();
 ```
 
-- A: `Aziz` and `undefined`
-- B: `Aziz` and `ReferenceError`
-- C: `ReferenceError` and `22`
-- D: `undefined` and `ReferenceError`
+- A: `Aziz` va `undefined`
+- B: `Aziz` va `ReferenceError`
+- C: `ReferenceError` va `22`
+- D: `undefined` va `ReferenceError`
 
 <details><summary><b>Javob</b></summary>
 <p>
 
 #### Javob: D
 
-Within the function, we first declare the `name` variable with the `var` keyword. This means that the variable gets hoisted (memory space is set up during the creation phase) with the default value of `undefined`, until we actually get to the line where we define the variable. We haven't defined the variable yet on the line where we try to log the `name` variable, so it still holds the value of `undefined`.
+Funksiya ichida name o‘zgaruvchisi `var` kalit so‘zi yordamida e'lon qilingan. `var` bilan e'lon qilingan o‘zgaruvchilar avvaldan xotirada`undefined` qiymat bilan joylashtiriladi `(hoisting)`. Shuning uchun, o‘zgaruvchiga qiymat berilguncha, uning qiymati `undefined` bo‘ladi.
 
-Variables with the `let` keyword (and `const`) are hoisted, but unlike `var`, don't get <i>initialized</i>. They are not accessible before the line we declare (initialize) them. This is called the "temporal dead zone". When we try to access the variables before they are declared, JavaScript throws a `ReferenceError`.
-
+`let` yoki `const` bilan e'lon qilingan o‘zgaruvchilar ham xotirada joylashtiriladi, ammo ular `temporal dead zone` (ma'lum vaqt davomida o‘zgaruvchidan foydalanib bo‘lmaydigan holat) ichida bo‘ladi. Ularni qiymat bilan boshlashdan oldin ishlatishga urinilsa, `ReferenceError` xatosi chiqadi.
 </p>
 </details>
 
 ---
 
-###### 2. Natija qanday chiqadi
+###### 2. Natija qnday chiqadi
 
 ```javascript
 for (var i = 0; i < 3; i++) {
@@ -51,9 +50,9 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-- A: `0 1 2` and `0 1 2`
-- B: `0 1 2` and `3 3 3`
-- C: `3 3 3` and `0 1 2`
+- A: `0 1 2` va `0 1 2`
+- B: `0 1 2` va `3 3 3`
+- C: `3 3 3` va `0 1 2`
 
 <details><summary><b>Javob</b></summary>
 <p>
@@ -62,14 +61,14 @@ for (let i = 0; i < 3; i++) {
 
 Because of the event queue in JavaScript, the `setTimeout` callback function is called _after_ the loop has been executed. Since the variable `i` in the first loop was declared using the `var` keyword, this value was global. During the loop, we incremented the value of `i` by `1` each time, using the unary operator `++`. By the time the `setTimeout` callback function was invoked, `i` was equal to `3` in the first example.
 
-In the second loop, the variable `i` was declared using the `let` keyword: variables declared with the `let` (and `const`) keyword are block-scoped (a block is anything between `{ }`). During each iteration, `i` will have a new value, and each value is scoped inside the loop.
+In the second loop, the variable `i` was declared using the `let` keyword: variables declared with the `let` (va `const`) keyword are block-scoped (a block is anything between `{ }`). During each iteration, `i` will have a new value, va each value is scoped inside the loop.
 
 </p>
 </details>
 
 ---
 
-###### 3. Natija qanday chiqadi
+###### 3. Natija qnday chiqadi
 
 ```javascript
 const shape = {
@@ -84,10 +83,10 @@ console.log(shape.diameter());
 console.log(shape.perimeter());
 ```
 
-- A: `20` and `62.83185307179586`
-- B: `20` and `NaN`
-- C: `20` and `63`
-- D: `NaN` and `63`
+- A: `20` va `62.83185307179586`
+- B: `20` va `NaN`
+- C: `20` va `63`
+- D: `NaN` va `63`
 
 <details><summary><b>Javob</b></summary>
 <p>
@@ -105,23 +104,23 @@ Since there is no value `radius` in the scope of the arrow function, `this.radiu
 
 ---
 
-###### 4. Natija qanday chiqadi
+###### 4. Natija qnday chiqadi
 
 ```javascript
 +true;
 !'Aziz';
 ```
 
-- A: `1` and `false`
-- B: `false` and `NaN`
-- C: `false` and `false`
+- A: `1` va `false`
+- B: `false` va `NaN`
+- C: `false` va `false`
 
 <details><summary><b>Javob</b></summary>
 <p>
 
 #### Javob: A
 
-The unary plus tries to convert an operand to a number. `true` is `1`, and `false` is `0`.
+The unary plus tries to convert an operva to a number. `true` is `1`, va `false` is `0`.
 
 The string `'Aziz'` is a truthy value. What we're actually asking, is "Is this truthy value falsy?". This returns `false`.
 
@@ -155,18 +154,18 @@ const mouse = {
 
 In JavaScript, all object keys are strings (unless it's a Symbol). Even though we might not _type_ them as strings, they are always converted into strings under the hood.
 
-JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket `[` and keeps going until it finds the closing bracket `]`. Only then, it will evaluate the statement.
+JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket `[` va keeps going until it finds the closing bracket `]`. Only then, it will evaluate the statement.
 
 `mouse[bird.size]`: First it evaluates `bird.size`, which is `"small"`. `mouse["small"]` returns `true`
 
-However, with dot notation, this doesn't happen. `mouse` does not have a key called `bird`, which means that `mouse.bird` is `undefined`. Then, we ask for the `size` using dot notation: `mouse.bird.size`. Since `mouse.bird` is `undefined`, we're actually asking `undefined.size`. This isn't valid, and will throw an error similar to `Cannot read property "size" of undefined`.
+However, with dot notation, this doesn't happen. `mouse` does not have a key called `bird`, which means that `mouse.bird` is `undefined`. Then, we ask for the `size` using dot notation: `mouse.bird.size`. Since `mouse.bird` is `undefined`, we're actually asking `undefined.size`. This isn't valid, va will throw an error similar to `Cannot read property "size" of undefined`.
 
 </p>
 </details>
 
 ---
 
-###### 6. Natija qanday chiqadi
+###### 6. Natija qnday chiqadi
 
 ```javascript
 let c = { greeting: 'Hey!' };
@@ -201,7 +200,7 @@ When you change one object, you change all of them.
 
 ---
 
-###### 7. Natija qanday chiqadi
+###### 7. Natija qnday chiqadi
 
 ```javascript
 let a = 3;
@@ -223,18 +222,18 @@ console.log(b === c);
 
 #### Javob: C
 
-`new Number()` is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.
+`new Number()` is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features va is an object.
 
 When we use the `==` operator (Equality operator), it only checks whether it has the same _value_. They both have the value of `3`, so it returns `true`.
 
-However, when we use the `===` operator (Strict equality operator), both value _and_ type should be the same. It's not: `new Number()` is not a number, it's an **object**. Both return `false.`
+However, when we use the `===` operator (Strict equality operator), both value _va_ type should be the same. It's not: `new Number()` is not a number, it's an **object**. Both return `false.`
 
 </p>
 </details>
 
 ---
 
-###### 8. Natija qanday chiqadi
+###### 8. Natija qnday chiqadi
 
 ```javascript
 class Chameleon {
@@ -262,14 +261,14 @@ console.log(freddie.colorChange('orange'));
 
 #### Javob: D
 
-The `colorChange` function is static. Static methods are designed to live only on the constructor in which they are created, and cannot be passed down to any children or called upon class instances. Since `freddie` is an instance of class Chameleon, the function cannot be called upon it. A `TypeError` is thrown.
+The `colorChange` function is static. Static methods are designed to live only on the constructor in which they are created, va cannot be passed down to any children or called upon class instances. Since `freddie` is an instance of class Chameleon, the function cannot be called upon it. A `TypeError` is thrown.
 
 </p>
 </details>
 
 ---
 
-###### 9. Natija qanday chiqadi
+###### 9. Natija qnday chiqadi
 
 ```javascript
 let greeting;
@@ -289,7 +288,7 @@ console.log(greetign);
 It logs the object, because we just created an empty object on the global object! When we mistyped `greeting` as `greetign`, the JS interpreter actually saw this as:
 
 1. `global.greetign = {}` in Node.js
-2. `window.greetign = {}`, `frames.greetign = {}` and `self.greetign` in browsers.
+2. `window.greetign = {}`, `frames.greetign = {}` va `self.greetign` in browsers.
 3. `self.greetign` in web workers.
 4. `globalThis.greetign` in all environments.
 
