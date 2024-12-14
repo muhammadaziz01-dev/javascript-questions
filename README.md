@@ -118,9 +118,8 @@ console.log(shape.perimeter());
 
 #### Javob: A
 
-The unary plus tries to convert an operva to a number. `true` is `1`, va `false` is `0`.
-
-The string `'Aziz'` is a truthy value. What we're actually asking, is "Is this truthy value falsy?". This returns `false`.
+`+true` - bu `true` qiymatini raqamga o‘zgartiradi, va bu `1` bo‘ladi.
+`!'Aziz'` - bu `Aziz` qatorini mantiqiy qiymatga o‘zgartiradi (truthy), va keyin inkor qiladi. Truthy qiymatning inkori `false`.
 
 </p>
 </details>
@@ -140,23 +139,19 @@ const mouse = {
 };
 ```
 
-- A: `mouse.bird.size` is not valid
-- B: `mouse[bird.size]` is not valid
-- C: `mouse[bird["size"]]` is not valid
-- D: All of them are valid
+- A: `mouse.bird.size` noto‘g‘ri
+- B: `mouse[bird.size]` noto‘g‘ri
+- C: `mouse[bird["size"]]` noto‘g‘ri
+- D: Hammasi to'gri
 
 <details><summary><b>Javob</b></summary>
 <p>
 
 #### Javob: A
 
-In JavaScript, all object keys are strings (unless it's a Symbol). Even though we might not _type_ them as strings, they are always converted into strings under the hood.
+Obyektlar ichidagi kalitlar qator ko‘rinishida bo‘ladi. `mouse[bird.size]` birinchi `bird.size` qiymatini (`small`) oladi va `mouse["small"]` ga aylantiradi, natija `true`.
 
-JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket `[` va keeps going until it finds the closing bracket `]`. Only then, it will evaluate the statement.
-
-`mouse[bird.size]`: First it evaluates `bird.size`, which is `"small"`. `mouse["small"]` returns `true`
-
-However, with dot notation, this doesn't happen. `mouse` does not have a key called `bird`, which means that `mouse.bird` is `undefined`. Then, we ask for the `size` using dot notation: `mouse.bird.size`. Since `mouse.bird` is `undefined`, we're actually asking `undefined.size`. This isn't valid, va will throw an error similar to `Cannot read property "size" of undefined`.
+Lekin `mouse.bird.size ishlamaydi` , chunki `mouse` obyektida `bird` degan kalit yo‘q. Natijada `Cannot read property "size" of undefined` xatosi chiqadi.
 
 </p>
 </details>
