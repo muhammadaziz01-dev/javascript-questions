@@ -59,9 +59,9 @@ for (let i = 0; i < 3; i++) {
 
 #### Javob: C
 
-Because of the event queue in JavaScript, the `setTimeout` callback function is called _after_ the loop has been executed. Since the variable `i` in the first loop was declared using the `var` keyword, this value was global. During the loop, we incremented the value of `i` by `1` each time, using the unary operator `++`. By the time the `setTimeout` callback function was invoked, `i` was equal to `3` in the first example.
+`setTimeout` funksiyasi orqali bajariladigan kod asosiy sikldan keyin ishga tushadi. Birinchi siklda `i` o‘zgaruvchisi `var` yordamida e'lon qilingan va bu o‘zgaruvchi global bo‘ladi. Sikl tugaganda, `i` qiymati `3` bo‘ladi va hamma chaqiruvlar bir xil qiymatni ko‘rsatadi (`3`).
 
-In the second loop, the variable `i` was declared using the `let` keyword: variables declared with the `let` (va `const`) keyword are block-scoped (a block is anything between `{ }`). During each iteration, `i` will have a new value, va each value is scoped inside the loop.
+Ikkinchi siklda `let` ishlatilgan, bu esa o‘zgaruvchini blok doirasida cheklaydi. Har bir iteratsiya uchun yangi `i` qiymati yaratiladi, va har bir `setTimeout` o‘zining alohida qiymatini ko‘rsatadi (`0, 1, 2`).
 
 </p>
 </details>
