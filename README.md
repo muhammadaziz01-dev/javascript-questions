@@ -180,13 +180,11 @@ console.log(d.greeting);
 
 #### Javob: A
 
-In JavaScript, all objects interact by _reference_ when setting them equal to each other.
-
-First, variable `c` holds a value to an object. Later, we assign `d` with the same reference that `c` has to the object.
+JavaScriptda obyektlar `reference` orqali o‘zaro bog‘lanadi. `d = c` deganda, `d` va `c` bir xil obyektga ishora qiladi. Shuning uchun, `c.greeting`ni o‘zgartirish, `d.greeting` qiymatini ham o‘zgartiradi.
 
 <img src="https://i.imgur.com/ko5k0fs.png" width="200">
 
-When you change one object, you change all of them.
+Bitta ob'ektni o'zgartirsangiz, ularning hammasini o'zgartirasiz.
 
 </p>
 </details>
