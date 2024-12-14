@@ -93,11 +93,9 @@ console.log(shape.perimeter());
 
 #### Javob: B
 
-Note that the value of `diameter` is a regular function, whereas the value of `perimeter` is an arrow function.
+`diameter` oddiy funksiya bo‘lib, undagi `this` kalit so‘zi `shape` obyektini ko‘rsatadi. Natijada, `this.radius` `10` bo‘lib, `diameter()` natijasi `20` chiqadi.
 
-With arrow functions, the `this` keyword refers to its current surrounding scope, unlike regular functions! This means that when we call `perimeter`, it doesn't refer to the shape object, but to its surrounding scope (window for example).
-
-Since there is no value `radius` in the scope of the arrow function, `this.radius` returns `undefined` which, when multiplied by `2 * Math.PI`, results in `NaN`.
+`perimeter` esa arrow function bo‘lib, undagi `this` tashqi (global) doirani ko‘rsatadi. Global doirada `radius` degan o‘zgaruvchi yo‘q, shuning uchun `this.radius` qiymati `undefined`, natija esa `NaN` bo‘ladi.
 
 </p>
 </details>
