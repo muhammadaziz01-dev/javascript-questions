@@ -213,11 +213,11 @@ console.log(b === c);
 
 #### Javob: C
 
-`new Number()` is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features va is an object.
+`new Number()` obyekt yaratadi.
 
-When we use the `==` operator (Equality operator), it only checks whether it has the same _value_. They both have the value of `3`, so it returns `true`.
-
-However, when we use the `===` operator (Strict equality operator), both value _va_ type should be the same. It's not: `new Number()` is not a number, it's an **object**. Both return `false.`
+- `a == b`: qiymatlar solishtiriladi (`3 == 3`), natija `true`.
+- `a === b`: qiymat va tur solishtiriladi (`number !== object`), natija `false`.
+- `b === c`: `b` obyekt bo‘lgani uchun, natija `false`.
 
 </p>
 </details>
